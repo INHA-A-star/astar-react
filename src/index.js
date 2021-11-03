@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './css/reset.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './channel';
 
 ReactDOM.render(
   <React.StrictMode>
