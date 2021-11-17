@@ -25,22 +25,20 @@ const Col = styled.div`
 `;
 
 const Piece = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
 
-  padding: 1.8rem;
   border: 1px solid darkgrey;
 
-  text-align: center;
   background-color: oldlace;
 `;
 
 const ZeroPiece = styled.div`
   width: 100%;
   height: 100%;
-
-  padding: 1.8rem;
-  border: 1px solid darkgrey;
 
   text-align: center;
 `;
@@ -54,7 +52,7 @@ function Puzzle({puzzle}) {
             {
               rowData.map((piece, j) =>
                 piece
-                  ? <Col key={j}><Piece>{piece}</Piece></Col>
+                  ? <Col key={j}><Piece><div>{piece}</div></Piece></Col>
                   : <Col key={j}><ZeroPiece /></Col>
               )
             }

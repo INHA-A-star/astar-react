@@ -7,7 +7,8 @@ const Nav = styled.nav`
   align-items: center;
   justify-content: space-around;
   border-bottom: 1px solid darkgray;
-
+  background-color: #fafafa;
+  
   & div {
     padding: 0.3rem 0;
     font-size: 2em;
@@ -22,11 +23,11 @@ const Nav = styled.nav`
       font-weight: bold;
     }
   }
+  
 `;
 
 const Li = styled.li`
   transition-duration: 0.5s;
-  
   :hover {
     border-bottom: 1px solid rosybrown;
   }
@@ -36,7 +37,7 @@ function AppHeader() {
   return (
     <Nav>
       <div>
-        <Link to="/"><i className="fas fa-star-half-alt"></i> Astar</Link>
+        <Link to="/">A *</Link>
       </div>
       <ul>
         <Li>
