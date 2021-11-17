@@ -24,6 +24,14 @@ const Nav = styled.nav`
   }
 `;
 
+const Li = styled.li`
+  transition-duration: 0.5s;
+  
+  :hover {
+    border-bottom: 1px solid rosybrown;
+  }
+`;
+
 function AppHeader() {
   return (
     <Nav>
@@ -31,12 +39,12 @@ function AppHeader() {
         <Link to="/"><i className="fas fa-star-half-alt"></i> Astar</Link>
       </div>
       <ul>
-        <li>
+        <Li>
           <Link to="/guide">Guide</Link>
-        </li>
-        <li>
+        </Li>
+        <Li>
           <Link to="/problem">Problem</Link>
-        </li>
+        </Li>
       </ul>
     </Nav>
   );

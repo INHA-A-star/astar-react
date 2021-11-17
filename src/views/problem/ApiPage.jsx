@@ -141,8 +141,8 @@ function ApiPage() {
         <SubTitle title="예시"/>
         <img src={puzzleImage2} alt="퍼즐2"/>
         <p>
-          위의 퍼즐을 풀기 위해서는, 타일을 <Highlighting content="U U L"/> 순서로 세 번에 걸쳐 이동하는 방법이 최적입니다.<br/>
-          <Highlighting content="L U R D L U R D L U"/> 순서로 이동하더라도 퍼즐을 풀 수는 있지만, 이동 횟수가 많아져 높은 점수를 얻을 수 없습니다.
+          위의 퍼즐을 풀기 위해서는, 타일을 <Highlighting content="L U"/> 순서로 두 번에 걸쳐 이동하는 방법이 최적입니다.<br/>
+          <Highlighting content="U L D R U L D R U L"/> 순서로 이동하더라도 퍼즐을 풀 수는 있지만, 이동 횟수가 많아져 높은 점수를 얻을 수 없습니다.
         </p>
 
         <SubTitle title="API 명세"/>
@@ -216,10 +216,9 @@ function ApiPage() {
           {'{'}<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;"time-stamp": 23,<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;"puzzle": [<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1, 5, 4, 9],<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7, 3, 12, 11],<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[14, 2, 6, 10],<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[15, 13, 0, 8]<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4, 1, 2],<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7, 0, 3],<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8, 5, 6],<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;]<br/>
           {'}'}
         </NoteContent>
@@ -248,7 +247,7 @@ function ApiPage() {
         </NoteContent>
         <ColorSubTitle title="example"/>
         <NoteContent>
-          curl -X POST {'{URL}'}/start<br/>
+          curl -X POST {'{URL}'}/move/2<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-H 'Authorization: {'{auth-key}'}'<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-H 'Content-Type: application/json'<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-d {`'{ "commands": [2, 3, 1, 0, 1, 2] }'`}
@@ -259,7 +258,6 @@ function ApiPage() {
           {'{'} <br/>
           &nbsp;&nbsp;&nbsp;&nbsp;"time-stamp": 95,<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;"moved": 5,<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;"failed": 1<br/>
           {'}'}
         </NoteContent>
 

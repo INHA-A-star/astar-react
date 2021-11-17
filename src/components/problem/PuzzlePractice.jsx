@@ -28,10 +28,11 @@ const Piece = styled.div`
   width: 100%;
   height: 100%;
 
-  padding: 1.8rem;
+  padding: 2rem;
   border: 1px solid darkgrey;
-
-  text-align: center;
+  
+  font-size: 1.5rem;
+  color: dimgray;
   background-color: oldlace;
 `;
 
@@ -40,19 +41,17 @@ const ZeroPiece = styled.div`
   height: 100%;
 
   padding: 1.8rem;
-  border: 1px solid darkgrey;
 
   text-align: center;
 `;
 
 function PuzzlePractice() {
   const [puzzle, setPuzzle] = useState([
-    [5, 13, 1, 11,],
-    [15, 8, 7, 4,],
-    [9, 3, 0, 12,],
-    [6, 14, 2, 10,],
+    [4, 1, 2],
+    [7, 0, 3],
+    [8, 5, 6],
   ]);
-  const [initialIndex, setInitialIndex] = useState({row: 2, col: 2});
+  const [initialIndex, setInitialIndex] = useState({row: 1, col: 1});
 
   const movePuzzle = useCallback((e) => {
     const keyCode = e.keyCode;
@@ -111,9 +110,9 @@ function PuzzlePractice() {
     } else if (keyCode === 38) {
       return row - 1 < 0;
     } else if (keyCode === 39) {
-      return col + 1 >= 4;
+      return col + 1 >= 3;
     } else if (keyCode === 40) {
-      return row + 1 >= 4;
+      return row + 1 >= 3;
     }
   };
 
