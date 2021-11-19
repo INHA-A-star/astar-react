@@ -22,6 +22,7 @@ const PuzzleBtn = styled.button`
   background-color: lightsteelblue;
   color: white;
   font-weight: bold;
+  cursor: pointer;
   
   &:hover {
     background-color: cornflowerblue;
@@ -47,14 +48,29 @@ const ModalContent = styled.div`
   }
 `;
 
-const CommandTable = styled.table`
-  width: 100%;
-  margin-top: 0.5rem;
-`;
-
 const UnorderedList = styled.ul`
   list-style: disc;
   margin-left: 2rem;
+`;
+
+const ArrowBtn = styled.button`
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  right: 100px;
+  bottom: 30px;
+  background-color: orange;
+  border: 0;
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  
+  transition: all 300ms ease-in;
+  
+  :hover {
+    transform: scale(1.1);
+  }
 `;
 
 function ApiPage() {
@@ -67,6 +83,10 @@ function ApiPage() {
 
   const toggleModal = () => {
     setShowModal((prev) => !prev);
+  };
+
+  const onClickScrollTop = () => {
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -92,26 +112,12 @@ function ApiPage() {
 
         <SubTitle title="이동"/>
         <p>타일을 이동하는 방법은 총 4가지가 있습니다.</p>
-        <CommandTable>
-          <tbody>
-          <tr>
-            <td>"U"</td>
-            <td>빈칸을 위로 움직인다.</td>
-          </tr>
-          <tr>
-            <td>"D"</td>
-            <td>빈칸을 아래로 움직인다.</td>
-          </tr>
-          <tr>
-            <td>"L"</td>
-            <td>빈칸을 왼쪽으로 움직인다.</td>
-          </tr>
-          <tr>
-            <td>"R"</td>
-            <td>빈칸을 오른쪽으로 움직인다.</td>
-          </tr>
-          </tbody>
-        </CommandTable>
+        <UnorderedList>
+          <li><Highlighting content="U"></Highlighting> : 위쪽</li>
+          <li><Highlighting content="R"></Highlighting> : 오른쪽</li>
+          <li><Highlighting content="D"></Highlighting> : 아래쪽</li>
+          <li><Highlighting content="L"></Highlighting> : 왼쪽</li>
+        </UnorderedList>
         <p>
           각 방향으로 이동할 수 있는 타일이 있다면, 해당 타일을 이동하고 <Emphasize content="이동 횟수"/> 가 1 증가합니다.<br/>
           격자의 상태는 타일이 이동한 상태로 바뀝니다.<br/>
@@ -292,6 +298,10 @@ function ApiPage() {
           &nbsp;&nbsp;&nbsp;&nbsp;"score": 1283<br/>
           {'}'}
         </NoteContent>
+
+        <ArrowBtn onClick={onClickScrollTop}>
+          <i className="fas fa-arrow-up"></i>
+        </ArrowBtn>
       </MainContentLayout>
     </>
   );

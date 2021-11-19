@@ -2,8 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const MainTitle = styled.h1`
-  font-size: 3em;
-  font-weight: bold;
+  font-size: 2.5rem;
+  font-weight: bolder;
 `;
 
 const ContentContainer = styled.div`

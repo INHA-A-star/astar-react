@@ -5,7 +5,7 @@ import AppLayout from '../components/common/AppLayout';
 import { css } from '@emotion/react';
 import '../css/guide.css';
 
-import hello from '../images/guide/hello.gif';
+import introduce from '../images/guide/introduce.png';
 import finish from '../images/guide/finish.gif';
 import result from '../images/guide/result.gif';
 import time from '../images/guide/time.gif';
@@ -13,6 +13,7 @@ import tab from '../images/guide/tab.png';
 import apiTab from '../images/guide/api_tab.png';
 import rankTab from '../images/guide/rank_tab.png';
 import restApi from '../images/guide/restapi.png';
+import styled from '@emotion/styled';
 
 const nextLink = css`
   display: block;
@@ -31,6 +32,14 @@ const nextLink = css`
   }
 `;
 
+const Message = styled.div`
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 3px;
+  margin: 30vh 0;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+`;
+
 function GuidePage() {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -46,7 +55,6 @@ function GuidePage() {
 
       const io = new IntersectionObserver((entries, observer) => {
         ioIndex = entries[0].target.dataset.index * 1;
-        console.log(ioIndex);
       });
 
       for (let i = 0; i < stepElems.length; i++) {
@@ -98,15 +106,17 @@ function GuidePage() {
     <AppLayout>
       <header className="header">
         <div className="global-width">
-          <p style={{marginTop: '10vh'}}>
-            테스트 대회에 참여해주셔서 감사합니다.<br/>
-            아래로 스크롤하여 대회 안내 사항을 확인해주세요!
-          </p>
+          <Message>
+            <p>
+              테스트 대회에 참여해주셔서 감사합니다.<br/>
+              아래로 스크롤하여 대회 안내 사항을 확인해주세요!
+            </p>
+          </Message>
         </div>
       </header>
       <section className="scroll-content">
         <div className="scroll-graphic">
-          <div className="graphic-item"><img className="scene-img" src={hello} alt=""/></div>
+          <div className="graphic-item"><img className="scene-img" src={introduce} alt=""/></div>
           <div className="graphic-item"><img className="scene-img" src={time} alt=""/></div>
           <div className="graphic-item"><img className="scene-img" src={restApi} alt=""/></div>
           <div className="graphic-item"><img className="scene-img" src={tab} alt=""/></div>
@@ -161,8 +171,6 @@ function GuidePage() {
           </div>
         </div>
       </section>
-      {/*<section className="normal-content global-width">*/}
-      {/*</section>*/}
     </AppLayout>
   );
 }

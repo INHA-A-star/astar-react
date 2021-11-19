@@ -3,11 +3,17 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 const Nav = styled.nav`
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-around;
   border-bottom: 1px solid darkgray;
   background-color: #fafafa;
+  
+  transition: all 300ms ease-in;
   
   & div {
     padding: 0.3rem 0;
@@ -20,6 +26,7 @@ const Nav = styled.nav`
 
     & li {
       padding: 0 1rem;
+      border: 2px solid transparent;
       font-weight: bold;
     }
   }
@@ -28,12 +35,14 @@ const Nav = styled.nav`
 
 const Li = styled.li`
   transition-duration: 0.5s;
+
   :hover {
-    border-bottom: 1px solid rosybrown;
+    background-color: #e7e4e4;
   }
 `;
 
 function AppHeader() {
+
   return (
     <Nav>
       <div>

@@ -64,23 +64,7 @@ function PuzzlePractice() {
 
     const clonePuzzle = cloneDeep(puzzle);
 
-    if (keyCode === 37) {
-      [clonePuzzle[row][col], clonePuzzle[row][col - 1]] = [
-        clonePuzzle[row][col - 1],
-        clonePuzzle[row][col],
-      ];
-
-      setPuzzle(clonePuzzle);
-      setInitialIndex(prev => ({...prev, col: prev.col - 1}));
-    } else if (keyCode === 38) {
-      [clonePuzzle[row][col], clonePuzzle[row - 1][col]] = [
-        clonePuzzle[row - 1][col],
-        clonePuzzle[row][col],
-      ];
-
-      setPuzzle(clonePuzzle);
-      setInitialIndex(prev => ({...prev, row: prev.row - 1}));
-    } else if (keyCode === 39) {
+    if (keyCode === 37) { // 좌
       [clonePuzzle[row][col], clonePuzzle[row][col + 1]] = [
         clonePuzzle[row][col + 1],
         clonePuzzle[row][col],
@@ -88,7 +72,7 @@ function PuzzlePractice() {
 
       setPuzzle(clonePuzzle);
       setInitialIndex(prev => ({...prev, col: prev.col + 1}));
-    } else if (keyCode === 40) {
+    } else if (keyCode === 38) { // 상
       [clonePuzzle[row][col], clonePuzzle[row + 1][col]] = [
         clonePuzzle[row + 1][col],
         clonePuzzle[row][col],
@@ -96,6 +80,22 @@ function PuzzlePractice() {
 
       setPuzzle(clonePuzzle);
       setInitialIndex(prev => ({...prev, row: prev.row + 1}));
+    } else if (keyCode === 39) { // 우
+      [clonePuzzle[row][col], clonePuzzle[row][col - 1]] = [
+        clonePuzzle[row][col - 1],
+        clonePuzzle[row][col],
+      ];
+
+      setPuzzle(clonePuzzle);
+      setInitialIndex(prev => ({...prev, col: prev.col - 1}));
+    } else if (keyCode === 40) { // 하
+      [clonePuzzle[row][col], clonePuzzle[row - 1][col]] = [
+        clonePuzzle[row - 1][col],
+        clonePuzzle[row][col],
+      ];
+
+      setPuzzle(clonePuzzle);
+      setInitialIndex(prev => ({...prev, row: prev.row - 1}));
     }
   }, [puzzle, initialIndex]);
 
@@ -105,14 +105,14 @@ function PuzzlePractice() {
   };
 
   const isNotBoundary = (keyCode, row, col) => {
-    if (keyCode === 37) {
-      return col - 1 < 0;
-    } else if (keyCode === 38) {
-      return row - 1 < 0;
-    } else if (keyCode === 39) {
+    if (keyCode === 37) { // 좌
       return col + 1 >= 3;
-    } else if (keyCode === 40) {
+    } else if (keyCode === 38) { // 상
       return row + 1 >= 3;
+    } else if (keyCode === 39) { // 우
+      return col - 1 < 0;
+    } else if (keyCode === 40) { // 하
+      return row - 1 < 0;
     }
   };
 
