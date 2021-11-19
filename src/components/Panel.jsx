@@ -52,7 +52,7 @@ const Container = styled.div`
 function Panel() {
   return (
     <Container>
-      <h1>Astar</h1>
+      <h1>A *</h1>
       <hr/>
       <p>휴리스틱 알고리즘 플랫폼을 위한 테스트 대회입니다.</p>
       <br/>

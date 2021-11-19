@@ -5,14 +5,14 @@ import AppLayout from '../components/common/AppLayout';
 import { css } from '@emotion/react';
 import '../css/guide.css';
 
-import image0 from '../images/00.png';
-import image1 from '../images/01.png';
-import image2 from '../images/02.png';
-import image3 from '../images/03.png';
-import image4 from '../images/04.png';
-import image5 from '../images/05.png';
-import image6 from '../images/06.png';
-import image7 from '../images/07.png';
+import hello from '../images/guide/hello.gif';
+import finish from '../images/guide/finish.gif';
+import result from '../images/guide/result.gif';
+import time from '../images/guide/time.gif';
+import tab from '../images/guide/tab.png';
+import apiTab from '../images/guide/api_tab.png';
+import rankTab from '../images/guide/rank_tab.png';
+import restApi from '../images/guide/restapi.png';
 
 const nextLink = css`
   display: block;
@@ -32,9 +32,12 @@ const nextLink = css`
 `;
 
 function GuidePage() {
-  let listener;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
+    let listener;
     (() => {
       const stepElems = document.querySelectorAll('.step');
       const graphicElems = document.querySelectorAll('.graphic-item');
@@ -43,10 +46,10 @@ function GuidePage() {
 
       const io = new IntersectionObserver((entries, observer) => {
         ioIndex = entries[0].target.dataset.index * 1;
+        console.log(ioIndex);
       });
 
       for (let i = 0; i < stepElems.length; i++) {
-        console.log(stepElems);
         io.observe(stepElems[i]);
         stepElems[i].dataset.index = `${i}`;
         graphicElems[i].dataset.index = `${i}`;
@@ -95,30 +98,27 @@ function GuidePage() {
     <AppLayout>
       <header className="header">
         <div className="global-width">
-          <h1 className="page-title">코로나19 시대, 제주 사는 개발자의 하루</h1>
-          <p>
-            이 페이지는 BBC 비주얼저널리즘 팀에서 제작한'재택근무의
-            일상화'... 코로나19가 바꿀 사무실의 미래 페이지를 비슷하게 구현해 본 개발 예제입니다. 시각적 기능만 비슷하게 만들어 본 것이므로, 개발 방식은 전혀 다를 수도 있습니다.<br/>아래의
-            내용은 제주 바닷가에 사는 개발자인 저의 실제 일상이기도 하지만, 강의영상 예제로 만든 페이지이므로 내용에 큰 의미를 두고 보실 필요는 없습니다 ㅎㅎ<br/>밑으로 스크롤 해봅시다.
+          <p style={{marginTop: '10vh'}}>
+            테스트 대회에 참여해주셔서 감사합니다.<br/>
+            아래로 스크롤하여 대회 안내 사항을 확인해주세요!
           </p>
         </div>
       </header>
       <section className="scroll-content">
         <div className="scroll-graphic">
-          <div className="graphic-item"><img className="scene-img" src={image0} alt=""/></div>
-          <div className="graphic-item"><img className="scene-img" src={image1} alt=""/></div>
-          <div className="graphic-item"><img className="scene-img" src={image2} alt=""/></div>
-          <div className="graphic-item"><img className="scene-img" src={image3} alt=""/></div>
-          <div className="graphic-item"><img className="scene-img" src={image4} alt=""/></div>
-          <div className="graphic-item"><img className="scene-img" src={image5} alt=""/></div>
-          <div className="graphic-item"><img className="scene-img" src={image6} alt=""/></div>
-          <div className="graphic-item"><img className="scene-img" src={image7} alt=""/></div>
+          <div className="graphic-item"><img className="scene-img" src={hello} alt=""/></div>
+          <div className="graphic-item"><img className="scene-img" src={time} alt=""/></div>
+          <div className="graphic-item"><img className="scene-img" src={restApi} alt=""/></div>
+          <div className="graphic-item"><img className="scene-img" src={tab} alt=""/></div>
+          <div className="graphic-item"><img className="scene-img" src={apiTab} alt=""/></div>
+          <div className="graphic-item"><img className="scene-img" src={result} alt=""/></div>
+          <div className="graphic-item"><img className="scene-img" src={rankTab} alt=""/></div>
+          <div className="graphic-item"><img className="scene-img" src={finish} alt=""/></div>
         </div>
         <div className="scroll-text global-width">
           <div className="step">
             <p>
               안녕하세요. <br/><br/>
-              테스트 대회입니다.<br/>
               테스트를 위한 몇 가지 안내사항을 알려드리겠습니다!
             </p>
           </div>
@@ -129,40 +129,40 @@ function GuidePage() {
           </div>
           <div className="step">
             <p>
-              사회적 거리두기를 위해 한적한 바닷길쪽으로 러닝을 한다.<br/>가끔 만나는 바닷새와 눈인사를 나눈다.
+              본 테스트는 REST API에 대한 기본적인 지식에 요구됩니다. <br/>
             </p>
           </div>
           <div className="step">
             <p>
-              맞다, 트위터의 걔.
+              대회를 시작하시면 3가지 탭을 보실 수 있습니다.
             </p>
           </div>
           <div className="step">
             <p>
-              운동을 마치고 집에 돌아와 작업을 시작한다.
+              'API 문서' 탭은 해결해야할 문제와 사용할 수 있는 API가 제공됩니다.
             </p>
           </div>
           <div className="step">
             <p>
-              밥은 집에서 먹거나, 테이크아웃이 가능한 메뉴를 골라 탁 트인 야외에서 먹는다. 물론 사회적 거리두기를 하기 위함이다.
+              '결과' 탭에서는 문제 풀이 결과에 대한 시각화 정보를 제공합니다<br/>
             </p>
           </div>
           <div className="step">
             <p>
-              보통 오후 작업은 집 근처의 일하기 좋은 카페에서 해왔지만, 코로나19 이후에는 집에서 하는 날이 많아졌다.
+              '순위' 탭에서는 높은 점수를 획득한 유저들을 알 수 있습니다.
             </p>
           </div>
-          <div className="step">
+          <div className="step last-step">
             <p>
-              라면 매니아 답게 유튜브로 채널을 보며 간식으로 라면을 먹는다.
+              여기까지 간단한 안내사항이었습니다. <br/>
+              아래 버튼을 눌러 대회를 시작하실 수 있습니다!<br/>
+              <Link to="/problem" css={nextLink}>다음</Link>
             </p>
           </div>
         </div>
       </section>
-      <section className="normal-content global-width">
-        아래 버튼을 눌러 대회를 시작하실 수 있습니다!
-      </section>
-      <Link to="/problem" css={nextLink}>다음</Link>
+      {/*<section className="normal-content global-width">*/}
+      {/*</section>*/}
     </AppLayout>
   );
 }

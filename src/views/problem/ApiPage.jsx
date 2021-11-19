@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SubTitle from '../../components/common/SubTitle';
 import puzzleImage1 from '../../images/puzzle-1.png';
 import puzzleImage2 from '../../images/puzzle-2.png';
@@ -59,6 +59,11 @@ const UnorderedList = styled.ul`
 
 function ApiPage() {
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   const toggleModal = () => {
     setShowModal((prev) => !prev);
