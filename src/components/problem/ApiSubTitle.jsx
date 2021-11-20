@@ -6,16 +6,16 @@ const style = css`
   display: inline-block;
   margin-top: 4rem;
   margin-bottom: 1rem;
-  padding: 0.3rem 0.5rem;
+  padding: 0.3rem 0;
   background-color: rgba(135 131, 120, 0.15);
   color:#eb5757;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: bold;
 `;
 
 function ApiSubTitle({title}) {
   return (
-    <h3 css={style}>[{title}]</h3>
+    <h3 css={style}>📄 {title}</h3>
   );
 }
 

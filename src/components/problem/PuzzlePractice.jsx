@@ -7,7 +7,6 @@ const PuzzleContainer = styled.div`
   border: 3px solid black;
   width: 400px;
   height: 400px;
-
   margin: 0 auto;
   padding: 0.5rem;
 `;
@@ -27,10 +26,9 @@ const Col = styled.div`
 const Piece = styled.div`
   width: 100%;
   height: 100%;
-
   padding: 2rem;
   border: 1px solid darkgrey;
-  
+
   font-size: 1.5rem;
   color: dimgray;
   background-color: oldlace;
@@ -39,11 +37,14 @@ const Piece = styled.div`
 const ZeroPiece = styled.div`
   width: 100%;
   height: 100%;
-
   padding: 1.8rem;
-
   text-align: center;
 `;
+
+const KEY_LEFT = 37;
+const KEY_UP = 38;
+const KEY_RIGHT = 39;
+const KEY_DOWN = 40;
 
 function PuzzlePractice() {
   const [puzzle, setPuzzle] = useState([
@@ -64,7 +65,7 @@ function PuzzlePractice() {
 
     const clonePuzzle = cloneDeep(puzzle);
 
-    if (keyCode === 37) { // 좌
+    if (keyCode === KEY_LEFT) {
       [clonePuzzle[row][col], clonePuzzle[row][col + 1]] = [
         clonePuzzle[row][col + 1],
         clonePuzzle[row][col],
@@ -72,7 +73,7 @@ function PuzzlePractice() {
 
       setPuzzle(clonePuzzle);
       setInitialIndex(prev => ({...prev, col: prev.col + 1}));
-    } else if (keyCode === 38) { // 상
+    } else if (keyCode === KEY_UP) {
       [clonePuzzle[row][col], clonePuzzle[row + 1][col]] = [
         clonePuzzle[row + 1][col],
         clonePuzzle[row][col],
@@ -80,7 +81,7 @@ function PuzzlePractice() {
 
       setPuzzle(clonePuzzle);
       setInitialIndex(prev => ({...prev, row: prev.row + 1}));
-    } else if (keyCode === 39) { // 우
+    } else if (keyCode === KEY_RIGHT) {
       [clonePuzzle[row][col], clonePuzzle[row][col - 1]] = [
         clonePuzzle[row][col - 1],
         clonePuzzle[row][col],
@@ -88,7 +89,7 @@ function PuzzlePractice() {
 
       setPuzzle(clonePuzzle);
       setInitialIndex(prev => ({...prev, col: prev.col - 1}));
-    } else if (keyCode === 40) { // 하
+    } else if (keyCode === KEY_DOWN) {
       [clonePuzzle[row][col], clonePuzzle[row - 1][col]] = [
         clonePuzzle[row - 1][col],
         clonePuzzle[row][col],
@@ -105,13 +106,13 @@ function PuzzlePractice() {
   };
 
   const isNotBoundary = (keyCode, row, col) => {
-    if (keyCode === 37) { // 좌
+    if (keyCode === KEY_LEFT) {
       return col + 1 >= 3;
-    } else if (keyCode === 38) { // 상
+    } else if (keyCode === KEY_UP) {
       return row + 1 >= 3;
-    } else if (keyCode === 39) { // 우
+    } else if (keyCode === KEY_RIGHT) {
       return col - 1 < 0;
-    } else if (keyCode === 40) { // 하
+    } else if (keyCode === KEY_DOWN) {
       return row - 1 < 0;
     }
   };

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const ModalContainer = styled.div`
+  z-index: 10;
   position: fixed;
   top: 0;
   right: 0;

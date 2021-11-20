@@ -32,6 +32,10 @@ const nextLink = css`
   }
 `;
 
+const opacity = css`
+  opacity: 0.7;
+`;
+
 const Message = styled.div`
   background-color: rgba(255, 255, 255, 0.8);
   box-shadow: rgba(0, 0, 0, 0.3) 0 0 3px;
@@ -116,14 +120,14 @@ function GuidePage() {
       </header>
       <section className="scroll-content">
         <div className="scroll-graphic">
-          <div className="graphic-item"><img className="scene-img" src={introduce} alt=""/></div>
-          <div className="graphic-item"><img className="scene-img" src={time} alt=""/></div>
-          <div className="graphic-item"><img className="scene-img" src={restApi} alt=""/></div>
-          <div className="graphic-item"><img className="scene-img" src={tab} alt=""/></div>
-          <div className="graphic-item"><img className="scene-img" src={apiTab} alt=""/></div>
-          <div className="graphic-item"><img className="scene-img" src={result} alt=""/></div>
-          <div className="graphic-item"><img className="scene-img" src={rankTab} alt=""/></div>
-          <div className="graphic-item"><img className="scene-img" src={finish} alt=""/></div>
+          <div className="graphic-item"><img className="scene-img" css={opacity} src={introduce} alt="introduce"/></div>
+          <div className="graphic-item"><img className="scene-img" css={opacity} src={time} alt="timer"/></div>
+          <div className="graphic-item"><img className="scene-img" css={opacity} src={restApi} alt="rest-api"/></div>
+          <div className="graphic-item"><img className="scene-img" css={opacity} src={tab} alt="nav-bar"/></div>
+          <div className="graphic-item"><img className="scene-img" css={opacity} src={apiTab} alt="api-tab"/></div>
+          <div className="graphic-item"><img className="scene-img" css={opacity} src={result} alt="result"/></div>
+          <div className="graphic-item"><img className="scene-img" css={opacity} src={rankTab} alt="rank-tab"/></div>
+          <div className="graphic-item"><img className="scene-img" css={opacity} src={finish} alt="end"/></div>
         </div>
         <div className="scroll-text global-width">
           <div className="step">
