@@ -1,0 +1,31 @@
+name: 8 puzzle front icd
+
+on:
+  push:
+    branches:
+      - master
+
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v18
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: ostar-front
+          environment_name: Ostarfront-env
+          version_label: ${{github.run_number}}
+          region: ap-northeast-2
+          deployment_package: deploy.zip
