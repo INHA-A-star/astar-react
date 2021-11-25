@@ -1,4 +1,4 @@
-name: 8 puzzle front icd
+name: 8 puzzle front ci/cd
 
 on:
   push:
