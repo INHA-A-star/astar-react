@@ -59,7 +59,9 @@ function ResultPage() {
       console.log(authKey);
       try {
         if (authKey) {
-          const {data} = await fetchScenarios(authKey);
+          const response = await fetchScenarios(authKey);
+          console.log(response);
+          const data = response.data;
           console.log(data);
           setTestcaseResults(data);
           setIsAuth(true);

@@ -1,7 +1,7 @@
-import axios from 'axios';
+import { instance } from './index';
 
 function fetchScenarios(authKey) {
-  return axios.get('/scenarios', {
+  return instance.get('/scenarios', {
     headers: {
       'X-Auth-Token': authKey
     }
