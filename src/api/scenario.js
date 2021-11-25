@@ -1,7 +1,11 @@
 import axios from 'axios';
 
-function fetchScenarios() {
-  return axios.get('/scenarios');
+function fetchScenarios(authKey) {
+  return axios.get('/scenarios', {
+    headers: {
+      'X-Auth-Token': authKey
+    }
+  });
 }
 
 export { fetchScenarios };

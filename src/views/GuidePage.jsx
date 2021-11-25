@@ -24,6 +24,9 @@ const nextLink = css`
   width: 70px;
   color: white;
   text-align: center;
+  
+  transition: all 300ms ease-in;
+  
   :hover {
     background-color: cornflowerblue;
   }
