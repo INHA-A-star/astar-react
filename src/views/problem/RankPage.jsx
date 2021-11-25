@@ -7,7 +7,7 @@ const Table = styled.table`
   margin-top: 0.5rem;
   border: 1px solid darkgray;
   text-align: left;
-  
+
   th {
     background-color: lightsteelblue;
     padding: 0.5rem;
@@ -32,7 +32,7 @@ function RankPage() {
   ]);
 
   return (
-    <MainContentLayout title="🏆 순위">
+    <MainContentLayout title="순위" emoji="🏆">
       <Table>
         <thead>
         <tr>

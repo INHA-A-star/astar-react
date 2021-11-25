@@ -1,5 +1,5 @@
 {
-  "proxy": "http://ostarapi-env.eba-5qinui8p.ap-northeast-2.elasticbeanstalk.com/api/",
+  "proxy": "http://ostarapi-env.eba-mggu63sz.ap-northeast-2.elasticbeanstalk.com/api/",
   "name": "astar-react",
   "version": "0.1.0",
   "private": true,
