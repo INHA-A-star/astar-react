@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
@@ -10,9 +10,14 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border-bottom: 1px solid darkgray;
-  background-color: #fafafa;
+  background-color: white;
+  -webkit-box-shadow: 0px 3px 5px -2px rgba(0,0,0,0.15);
+  -moz-box-shadow: 0px 3px 5px -2px rgba(0,0,0,0.15);
+  box-shadow: 0px 3px 5px -2px rgba(0,0,0,0.15);
+
+  
   transition: all 300ms ease-in;
+  
   & div {
     padding: 0.3rem 0;
     font-size: 2em;
@@ -34,8 +39,22 @@ const Nav = styled.nav`
 `;
 
 function AppHeader() {
+  const ref = useRef(null);
+
+  document.addEventListener('scroll', () => {
+    if (!ref.current) {
+      return;
+    }
+    const navbarHeight = ref.current && ref.current.getBoundingClientRect().height;
+    if (window.scrollY > navbarHeight) {
+      ref.current.classList.add('navbar');
+    } else {
+      ref.current.classList.remove('navbar');
+    }
+  });
+
   return (
-    <Nav>
+    <Nav ref={ref}>
       <div>
         <Link to="/">A *</Link>
       </div>
