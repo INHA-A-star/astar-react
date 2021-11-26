@@ -62,9 +62,13 @@ function ResultPage() {
           const response = await fetchScenarios(authKey);
           console.log(response);
           const data = response.data;
-          console.log(data);
-          setTestcaseResults(data);
-          setIsAuth(true);
+          if (Array.isArray(data) && data[0].situations) {
+            console.log(data);
+            setTestcaseResults(data);
+            setIsAuth(true);
+          } else {
+            setErrorMessage('토큰 정보를 확인해주세요!')
+          }
         }
       } catch (err) {
         console.log(err);
