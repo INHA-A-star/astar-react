@@ -2,7 +2,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
-function ColorSubTitle({title, color}) {
+function ColorSubTitle({title, color, emoji}) {
   const style = css`
     color: ${color};
     font-size: 1.3rem;
@@ -11,7 +11,7 @@ function ColorSubTitle({title, color}) {
   `;
 
   return (
-    <h3 css={style}>{title}</h3>
+    <h3 css={style}>{title}{emoji}</h3>
   );
 }
 

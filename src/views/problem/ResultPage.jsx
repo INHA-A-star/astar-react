@@ -155,7 +155,6 @@ function ResultPage() {
           ? testcaseResults.map((result, index) =>
             <TestcaseResult key={index}
                             result={result.situations}
-                            status={result.status}
                             index={index}
             />
           )

@@ -35,6 +35,10 @@ const nextLink = css`
   }
 `;
 
+const LastParagraph = styled.p`
+  padding: 1rem 0;
+`;
+
 const opacity = css`
   opacity: 0.7;
 `;
@@ -170,10 +174,10 @@ function GuidePage() {
             </p>
           </div>
           <div className="step last-step">
-            <p>
+            <LastParagraph>
               여기까지 간단한 안내사항이었습니다. <br/>
               <Link to="/problem" css={nextLink}>대회 시작하기</Link>
-            </p>
+            </LastParagraph>
           </div>
         </div>
       </section>
