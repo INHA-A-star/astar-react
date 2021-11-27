@@ -51,7 +51,6 @@ const NoneMessage = styled.div`
   width: 100%;
   height: 300px;
   border-radius: 1rem;
-  background-color: blanchedalmond;
   font-size: 2rem;
 `;
 
