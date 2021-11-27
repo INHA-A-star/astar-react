@@ -106,9 +106,13 @@ const Aside = styled.aside`
   border-left: 1px dashed darkgrey;
   color: #b4b4b4;
   font-size: 0.9rem;
-  
+  user-select: none;
   cursor: pointer;
-
+  
+  li:hover {
+    color: black;
+  }
+  
   @media screen and (max-width: 1400px) {
     display: none;
   }
@@ -253,7 +257,6 @@ function ApiPage() {
         <ColorSubTitle title="example"/>
         <NoteContent>
           curl -X POST {'{URL}'}/start<br/>
-          &emsp;&nbsp;-H 'X-Auth-Token: {'X-Auth-Token'}'<br/>
           &emsp;&nbsp;-H 'Content-Type: application/json'<br/>
           &emsp;&nbsp;-d '{'{ "email": user@inha.edu }'}'
         </NoteContent>
@@ -326,7 +329,7 @@ function ApiPage() {
         </p>
         <ColorSubTitle title="example"/>
         <NoteContent>
-          curl -X POST {'{URL}'}/move/2<br/>
+          curl -X PUT {'{URL}'}/move/2<br/>
           &emsp;&nbsp;-H 'X-Auth-Token: {'{AuthorizationToken}'}'<br/>
           &emsp;&nbsp;-H 'Content-Type: application/json'<br/>
           &emsp;&nbsp;-d {`'{ "command": 3 }'`}
