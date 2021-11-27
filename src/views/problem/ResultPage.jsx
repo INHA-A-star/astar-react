@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import MainContentLayout from '../../components/common/MainContentLayout';
 import { fetchScenarios } from '../../api/scenario';
 import TestcaseResult from '../../components/problem/TestcaseResult';
@@ -10,7 +10,7 @@ const Form = styled.form`
   .token {
     position: relative;
     z-index: 1;
-    margin: 1.5rem auto;
+    margin: 1.5rem auto 0.5rem auto;
     width: 65%;
 
     .token__description {
@@ -46,10 +46,12 @@ const Form = styled.form`
 
   button {
     background-color: lightsteelblue;
+    margin-top: 1rem;
     border: 0;
     border-radius: 5px;
     padding: 0.7rem 1rem;
     color: white;
+    cursor: pointer;
 
     transition: all 300ms ease-in;
 
@@ -63,6 +65,7 @@ const Form = styled.form`
 const Error = styled.p`
   color: red;
   font-size: 0.8rem;
+  margin-bottom: 0.5rem;
 `;
 
 function ResultPage() {

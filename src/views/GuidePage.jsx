@@ -16,12 +16,12 @@ import restApi from '../images/guide/restapi.png';
 import styled from '@emotion/styled';
 
 const nextLink = css`
-  display: block;
+  display: inline-block;
   background-color: lightsteelblue;
-  margin: 1rem auto 0 auto;
+  width: 45%;
+  margin-top: 1rem;
   border-radius: 3px;
   padding: 0.5rem 0.3rem;
-  width: 70px;
   color: white;
   text-align: center;
   
@@ -172,8 +172,7 @@ function GuidePage() {
           <div className="step last-step">
             <p>
               여기까지 간단한 안내사항이었습니다. <br/>
-              아래 버튼을 눌러 대회를 시작하실 수 있습니다!<br/>
-              <Link to="/problem" css={nextLink}>다음</Link>
+              <Link to="/problem" css={nextLink}>대회 시작하기</Link>
             </p>
           </div>
         </div>

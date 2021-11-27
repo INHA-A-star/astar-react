@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import SubTitle from '../../components/common/SubTitle';
+import React, { useEffect, useRef, useState } from 'react';
 import puzzleImage1 from '../../images/puzzle-1.png';
 import puzzleImage2 from '../../images/puzzle-2.png';
 import AppModal from '../../components/common/AppModal';
@@ -12,7 +11,6 @@ import ApiSubTitle from '../../components/problem/ApiSubTitle';
 import NoteContent from '../../components/problem/NoteContent';
 import ColorText from '../../components/common/ColorText';
 import MainContentLayout from '../../components/common/MainContentLayout';
-import FirstSubTitle from '../../components/common/FirstSubTitle';
 
 const PuzzleBtn = styled.button`
   padding: 1rem;
@@ -24,6 +22,8 @@ const PuzzleBtn = styled.button`
   font-weight: bold;
   cursor: pointer;
   
+  transition: all 300ms ease-in;
+  
   &:hover {
     background-color: cornflowerblue;
   }
@@ -31,6 +31,26 @@ const PuzzleBtn = styled.button`
   &:active {
     transform: translateY(5px);
   }
+`;
+const FirstSubTitle = styled.h2`
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+
+  color: #708090;
+  font-size: 1.7rem;
+  font-weight: bold;
+  border-bottom: 1px solid hsla(0,0%,0%,0.07);
+`; 
+
+const SubTitle = styled.h2`
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+
+  color: #708090;
+  font-size: 1.7rem;
+  font-weight: bold;
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.07);
 `;
 
 const ModalContent = styled.div`
@@ -76,15 +96,32 @@ const ArrowBtn = styled.button`
 const StatusCode = styled.span`
   display: inline-block;
   width: 150px;
-`
+`;
+
+const Aside = styled.aside`
+  position: fixed;
+  top: 15rem;
+  right: 5rem;
+  padding: 1rem;
+  border-left: 1px dashed darkgrey;
+  color: #b4b4b4;
+  font-size: 0.9rem;
+  
+  cursor: pointer;
+
+  @media screen and (max-width: 1400px) {
+    display: none;
+  }
+`;
 
 function ApiPage() {
   const [showModal, setShowModal] = useState(false);
 
+  const sidebarRef = useRef([]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
 
   const toggleModal = () => {
     setShowModal((prev) => !prev);
@@ -97,10 +134,33 @@ function ApiPage() {
     });
   };
 
+  const onSidebarClick = (e) => {
+    const target = e.target;
+    const index = target.dataset.index;
+    if (index == null || sidebarRef == null) {
+      return;
+    }
+
+    const section = sidebarRef.current[index];
+    const rect = section.getBoundingClientRect();
+    section.scrollIntoView();
+    window.scrollBy(0, -rect.height);
+  };
+
   return (
     <>
+      <Aside className="sidebar" onClick={onSidebarClick}>
+        <ul>
+          <li data-index="0">개요</li>
+          <li data-index="1">이동</li>
+          <li data-index="2">제한</li>
+          <li data-index="3">결과</li>
+          <li data-index="4">예시</li>
+          <li data-index="5">API 명세</li>
+        </ul>
+      </Aside>
       <MainContentLayout title="📄 API 문서">
-        <FirstSubTitle title="개요"/>
+        <FirstSubTitle ref={el => (sidebarRef.current[0] = el)}>개요</FirstSubTitle>
         <p>
           8-퍼즐은 3x3 격자 판에서 타일들을 정렬하는 퍼즐입니다.<br/>
           타일은 8개가 있습니다. 각각 1에서 8까지 번호가 매겨져 있고, 초기에는 무작위로 뒤섞여 있습니다.<br/>
@@ -118,7 +178,7 @@ function ApiPage() {
           </ModalContent>
         </AppModal>
 
-        <SubTitle title="이동"/>
+        <SubTitle ref={el => (sidebarRef.current[1] = el)}>이동</SubTitle>
         <p>타일을 이동하는 방법은 총 4가지가 있습니다.</p>
         <UnorderedList>
           <li><Highlighting content="U"></Highlighting> : 위쪽</li>
@@ -131,7 +191,7 @@ function ApiPage() {
           격자의 상태는 타일이 이동한 상태로 바뀝니다.
         </p>
 
-        <SubTitle title="제한"/>
+        <SubTitle ref={el => (sidebarRef.current[2] = el)}>제한</SubTitle>
         <UnorderedList>
           <li>정렬이 불가능한 퍼즐 상태는 입력으로 주어지지 않습니다.</li>
           <li>3x3 격자가 아닌 경우는 입력으로 주어지지 않습니다.</li>
@@ -139,7 +199,7 @@ function ApiPage() {
           <li>각 퍼즐은 200번을 초과하지 않는 이동 방법이 반드시 존재합니다.</li>
         </UnorderedList>
 
-        <SubTitle title="결과"/>
+        <SubTitle ref={el => (sidebarRef.current[3] = el)}>결과</SubTitle>
         <ColorSubTitle title="Accept" color="green"/>
         <p>
           모든 테스트 케이스에 대하여 정렬에 성공한 경우 점수를 얻게 됩니다.<br/>
@@ -155,14 +215,14 @@ function ApiPage() {
           현재 채점이 완전히 끝나지 않고 다른 채점이 시작되면 받게 됩니다.
         </p>
 
-        <SubTitle title="예시"/>
+        <SubTitle ref={el => (sidebarRef.current[4] = el)}>예시</SubTitle>
         <img src={puzzleImage2} alt="퍼즐2"/>
         <p>
           위의 퍼즐을 풀기 위해서는, 타일을 <Highlighting content="L U"/> 순서로 두 번에 걸쳐 이동하는 방법이 최적입니다.<br/>
           <Highlighting content="U L D R U L D R U L"/> 순서로 이동하더라도 퍼즐을 풀 수는 있지만, 이동 횟수가 많아져 높은 점수를 얻을 수 없습니다.
         </p>
 
-        <SubTitle title="API 명세"/>
+        <SubTitle ref={el => (sidebarRef.current[5] = el)}>API 명세</SubTitle>
         <p>
           HTTP 요청을 통해 서버와 통신하며 api를 사용할 수 있습니다.<br/>
           요청과 응답은 모두 json 포맷을 이용해야 합니다.<br/><br/>

@@ -37,7 +37,7 @@ const Li = styled.li`
   a {
     display: block;
     text-decoration: none;
-    color: black;
+    color: white;
   }
 `;
 

@@ -29,10 +29,10 @@ const Nav = styled.nav`
       padding: 0.2rem 1rem;
       border: 2px solid transparent;
       border-radius: 5px;
-      font-weight: bold;
       transition-duration: 0.5s;
-      :hover {
-        background-color: #e7e4e4;
+      
+      :hover a {
+        color: lightsteelblue;
       }
     }
   }
@@ -60,10 +60,10 @@ function AppHeader() {
       </div>
       <ul>
         <li>
-          <Link to="/guide">Guide</Link>
+          <Link to="/guide">대회 안내</Link>
         </li>
         <li>
-          <Link to="/problem">Problem</Link>
+          <Link to="/problem">문제</Link>
         </li>
       </ul>
     </Nav>
