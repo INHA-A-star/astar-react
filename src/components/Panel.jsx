@@ -3,48 +3,49 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 const Container = styled.div`
-  font-family: 'Source Sans Pro';
   font-size: 1.3em;
   position: absolute;
-  z-index: 10;
   width: 200px;
-  height: 220px;
-  background: #eee;
   top: 50%;
   left: 50%;
-  margin: -110px 0 0 -100px;
+  margin: -150px 0 0 -100px;
   padding: 20px;
-  border-radius: 4px;
-  box-sizing: border-box;
   z-index: 100;
+  color: white;
+  text-align: center;
+  user-select: none;
   
-  & h1 {
-    font-size: 1.8em;
+  h1 {
+    font-size: 4rem;
     font-weight: 700;
-    text-align: center;
-    color: #000000;
     margin-top: -10px;
+
+    background: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
-  
-  & p {
+
+  p {
     font-weight: 400;
     font-size: 0.8rem;
-    text-align: center;
     line-height: 1.3em;
   }
-  
+
   a {
     display: block;
-    text-align: center;
-    border: 1px solid lightgray;
     margin: 0 auto;
-    
-    font-size: 0.8rem;
+    border: 1px solid #312e2e;
+    border-radius: 5px;
     padding: 0.5rem;
-    
+    color: white;
+    font-size: 0.8rem;
+
+    transition: all 300ms ease-in;
+
     :hover {
       background-color: lightgray;
       font-weight: bold;
+      color: black;
     }
   }
 `
@@ -53,8 +54,6 @@ function Panel() {
   return (
     <Container>
       <h1>A *</h1>
-      <hr/>
-      <p>휴리스틱 알고리즘 플랫폼을 위한 테스트 대회입니다.</p>
       <br/>
       <Link to="/guide">대회 시작하기</Link>
     </Container>

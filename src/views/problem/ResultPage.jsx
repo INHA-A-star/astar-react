@@ -43,7 +43,6 @@ const Form = styled.form`
     }
   }
 
-
   button {
     background-color: lightsteelblue;
     margin-top: 1rem;
@@ -81,25 +80,25 @@ function ResultPage() {
 
   const onSubmitForm = (e) => {
     e.preventDefault();
+    if (!authKey) {
+      setErrorMessage('토큰 정보를 입력해주세요!')
+    }
+
     setIsLoading(true);
 
     async function getScenarios() {
-      console.log(authKey);
       try {
         if (authKey) {
           const response = await fetchScenarios(authKey);
-          console.log(response);
           const data = response.data;
           if (Array.isArray(data) && data[0].situations) {
-            console.log(data);
             setTestcaseResults(data);
             setIsAuth(true);
           } else {
-            setErrorMessage('토큰 정보를 확인해주세요!')
+            setErrorMessage('토큰 정보가 올바르지 않습니다!')
           }
         }
       } catch (err) {
-        console.log(err);
         setErrorMessage('토큰 정보를 확인해주세요!');
       } finally {
         setIsLoading(false);
@@ -134,7 +133,7 @@ function ResultPage() {
           isLoading
             ? <LoadingSpinner/>
             : <Form onSubmit={onSubmitForm}>
-              <label htmlFor="auth">✍🏻 Start API를 통해 받은 AuthorizationToken를 입력해주세요.</label><br/>
+              <label htmlFor="auth">✏️ Start API를 통해 받은 AuthorizationToken를 입력해주세요.</label><br/>
               <div className="token">
                 <p className="token__description">AuthorizationToken</p>
                 <input id="auth" type="text" value={authKey} onChange={onAuthChange} onFocus={onInputFocus} onBlur={onInputBlur}/><br/>

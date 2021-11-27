@@ -185,10 +185,10 @@ function ApiPage() {
         <SubTitle ref={el => (sidebarRef.current[1] = el)}>이동</SubTitle>
         <p>타일을 이동하는 방법은 총 4가지가 있습니다.</p>
         <UnorderedList>
-          <li><Highlighting content="U"></Highlighting> : 위쪽</li>
-          <li><Highlighting content="R"></Highlighting> : 오른쪽</li>
-          <li><Highlighting content="D"></Highlighting> : 아래쪽</li>
-          <li><Highlighting content="L"></Highlighting> : 왼쪽</li>
+          <li><Highlighting content="U"/> : 위쪽</li>
+          <li><Highlighting content="R"/> : 오른쪽</li>
+          <li><Highlighting content="D"/> : 아래쪽</li>
+          <li><Highlighting content="L"/> : 왼쪽</li>
         </UnorderedList>
         <p>
           각 방향으로 이동할 수 있는 타일이 있다면, 해당 타일을 이동하고 <Emphasize content="이동 횟수"/> 가 1 증가합니다.<br/>
@@ -228,7 +228,7 @@ function ApiPage() {
 
         <SubTitle ref={el => (sidebarRef.current[5] = el)}>API 명세</SubTitle>
         <p>
-          HTTP 요청을 통해 서버와 통신하며 api를 사용할 수 있습니다.<br/>
+          HTTP 요청을 통해 서버와 통신하며 API를 사용할 수 있습니다.<br/>
           요청과 응답은 모두 json 포맷을 이용해야 합니다.<br/><br/>
 
           {'{URL}: http://ostarapi-env.eba-mggu63sz.ap-northeast-2.elasticbeanstalk.com/api'}
@@ -258,7 +258,7 @@ function ApiPage() {
         <NoteContent>
           curl -X POST {'{URL}'}/start<br/>
           &emsp;&nbsp;-H 'Content-Type: application/json'<br/>
-          &emsp;&nbsp;-d '{'{ "email": user@inha.edu }'}'
+          &emsp;&nbsp;-d '{'{ "email": "user@inha.edu" }'}'
         </NoteContent>
         <ColorSubTitle title="response"/>
         <NoteContent>
@@ -300,7 +300,10 @@ function ApiPage() {
           &emsp;]<br/>
           {'}'}
         </NoteContent>
-        <p>정수 타입의 "time_stamp"와 가변길이 2차원 배열 타입의 "puzzle"을 응답하게 됩니다.</p>
+        <p>
+          정수 타입의 "time_stamp"와 가변길이 2차원 배열 타입의 "puzzle"을 응답하게 됩니다.<br/>
+          해당 배열에서 0은 퍼즐에서의 빈칸을 의미합니다.
+        </p>
 
         <ApiSubTitle title="Move API"/>
         <p>

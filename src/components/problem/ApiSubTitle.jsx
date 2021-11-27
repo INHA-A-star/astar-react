@@ -15,7 +15,7 @@ const style = css`
 
 function ApiSubTitle({title}) {
   return (
-    <h3 css={style}>📄 {title}</h3>
+    <h3 css={style}>{title}</h3>
   );
 }
 

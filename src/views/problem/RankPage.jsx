@@ -64,7 +64,6 @@ function RankPage() {
         setUserList(result.data['rank_list'].Rank);
       })
       .catch((error) => {
-        console.log(error);
       })
       .finally(() => {
         setIsLoading(false);
@@ -75,7 +74,7 @@ function RankPage() {
     <MainContentLayout title="순위" emoji="🏆">
       {
         isLoading ? <LoadingSpinner/> : userList.length === 0
-          ? <NoneMessage>아직 순위에 든 유저가 없습니다!</NoneMessage>
+          ? <NoneMessage>아직 순위에 든 유저가 없습니다! 😅</NoneMessage>
           : userList.map((user, index) => <UserCard key={user.UserId}>
             <span className="user__rank">{index + 1}</span>
             <UserImage><i className="far fa-user"></i></UserImage>

@@ -48,6 +48,10 @@ function TestcaseResult({result, index}) {
     return true;
   };
 
+  const isNotSubmit = () => {
+    return result.length <= 1;
+  }
+
   return (
     <div>
       <div onClick={toggleTestcase}>
@@ -62,12 +66,12 @@ function TestcaseResult({result, index}) {
         {
           isSuccess()
             ? <TestcaseResultContent title="정답입니다 😄"/>
-            : <TestcaseResultContent title="오답입니다 😓"/>
+            : isNotSubmit() ? <TestcaseResultContent title="미제출 상태입니다 🙂"/> : <TestcaseResultContent title="오답입니다 😓"/>
         }
         <div>
           <Puzzle puzzle={result[step].puzzle}/>
-          <Input type="range" value={step} min="0" max={result.length - 1} onChange={showPuzzleProcess}/>
-          {result.length <= 1 && <ErrorMessage>정답을 제출한 후 확인해보세요!</ErrorMessage>}
+          <Input type="range" value={step} min="0" max={result.length - 1} onChange={showPuzzleProcess} disabled={isNotSubmit()}/>
+          {isNotSubmit() && <ErrorMessage>정답을 제출한 후 확인해보세요!</ErrorMessage>}
         </div>
       </TestcaseContainer>
     </div>
