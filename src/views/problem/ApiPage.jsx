@@ -341,10 +341,15 @@ function ApiPage() {
         <NoteContent>
           HTTP/1.1 200 OK<br/>
           {'{'} <br/>
-          &emsp;"time-stamp": 95<br/>
+          &emsp;"time_stamp": 95<br/>
+          &emsp;"puzzle": [<br/>
+          &emsp;&nbsp;&nbsp;&nbsp;&nbsp;[4, 1, 2],<br/>
+          &emsp;&nbsp;&nbsp;&nbsp;&nbsp;[7, 0, 3],<br/>
+          &emsp;&nbsp;&nbsp;&nbsp;&nbsp;[8, 5, 6],<br/>
+          &emsp;]<br/>
           {'}'}
         </NoteContent>
-        <p>마지막 요청에 대한 "time_stamp"를 응답합니다.</p>
+        <p>마지막 요청에 대한 "time_stamp"와 변화한 퍼즐의 상태를 응답합니다.</p>
 
         <ApiSubTitle title="Finish API"/>
         <p>

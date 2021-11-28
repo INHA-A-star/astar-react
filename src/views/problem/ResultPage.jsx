@@ -22,6 +22,7 @@ const Form = styled.form`
       z-index: -1;
       background-color: white;
       color: #c2c0c0;
+      user-select: none;
       
       transition: all 300ms ease-in;
     }
